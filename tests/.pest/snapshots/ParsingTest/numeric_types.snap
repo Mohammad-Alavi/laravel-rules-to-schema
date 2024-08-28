@@ -1,0 +1,8 @@
+{
+    "type": "object",
+    "properties": {
+        "decimal_property": {
+            "type": "number"
+        }
+    }
+}

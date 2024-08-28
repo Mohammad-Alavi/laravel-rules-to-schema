@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "array": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "one": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "two": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "property1": {
+                                    "type": "string"
+                                },
+                                "property2": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "type": "object",
+    "properties": {
+        "in_rule": {
+            "type": "integer"
+        },
+        "in_rule_str": {
+            "type": "string"
+        },
+        "in_mixed": []
+    }
+}

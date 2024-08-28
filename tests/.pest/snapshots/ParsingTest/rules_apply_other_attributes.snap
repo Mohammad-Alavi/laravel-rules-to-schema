@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "properties": {
+        "str_min": {
+            "type": "string",
+            "minLength": 1
+        },
+        "str_max": {
+            "type": "string",
+            "maxLength": 10
+        },
+        "int_min": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "int_max": {
+            "type": "integer",
+            "maximum": 10
+        },
+        "float_min": {
+            "type": "number",
+            "minimum": 1
+        },
+        "float_max": {
+            "type": "number",
+            "maximum": 10
+        },
+        "array_min": {
+            "type": "array",
+            "minItems": 1
+        },
+        "array_max": {
+            "type": "array",
+            "maxItems": 10
+        },
+        "regex": {
+            "type": "string",
+            "pattern": "[a-z]{4}"
+        }
+    }
+}

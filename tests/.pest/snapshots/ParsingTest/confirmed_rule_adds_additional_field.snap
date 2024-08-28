@@ -1,0 +1,11 @@
+{
+    "type": "object",
+    "properties": {
+        "password": {
+            "type": "string"
+        },
+        "password_confirmed": {
+            "type": "string"
+        }
+    }
+}

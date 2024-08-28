@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "strings": {
+            "type": "string",
+            "format": "uri",
+            "minLength": 6
+        }
+    }
+}

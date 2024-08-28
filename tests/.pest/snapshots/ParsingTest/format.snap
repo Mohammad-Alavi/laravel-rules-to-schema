@@ -1,0 +1,44 @@
+{
+    "type": "object",
+    "properties": {
+        "regex": {
+            "type": "string"
+        },
+        "not_regex": {
+            "type": "string"
+        },
+        "uuid": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "url": {
+            "type": "string",
+            "format": "uri"
+        },
+        "ipv4": {
+            "type": "string",
+            "format": "ipv4"
+        },
+        "ipv6": {
+            "type": "string",
+            "format": "ipv6"
+        },
+        "email": {
+            "type": "string",
+            "format": "email"
+        },
+        "date": {
+            "type": "string"
+        },
+        "date_format": {
+            "type": "string"
+        },
+        "date_equals": {
+            "type": "string"
+        },
+        "mimetypes": {
+            "contentMediaType": "application\/json"
+        },
+        "mimes": []
+    }
+}

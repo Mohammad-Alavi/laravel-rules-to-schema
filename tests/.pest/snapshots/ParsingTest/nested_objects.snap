@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "object1": {
+            "type": "object",
+            "properties": {
+                "object2": {
+                    "type": "object",
+                    "properties": {
+                        "property1": {
+                            "type": "string"
+                        },
+                        "property2": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

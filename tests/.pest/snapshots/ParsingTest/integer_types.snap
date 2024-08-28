@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "properties": {
+        "integer_property": {
+            "type": "integer"
+        },
+        "int_property": {
+            "type": "integer"
+        },
+        "enum_property": {
+            "type": "integer",
+            "enum": [
+                1,
+                2,
+                3
+            ]
+        }
+    }
+}

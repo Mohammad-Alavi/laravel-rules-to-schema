@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "nullable_object": {
+            "type": [
+                "null",
+                "object"
+            ],
+            "properties": {
+                "myProperty": {
+                    "type": "string"
+                }
+            }
+        },
+        "nullable_array": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

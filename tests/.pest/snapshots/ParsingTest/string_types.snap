@@ -1,0 +1,59 @@
+{
+    "type": "object",
+    "properties": {
+        "string_property": {
+            "type": "string"
+        },
+        "password_property": {
+            "type": "string"
+        },
+        "date_property": {
+            "type": "string"
+        },
+        "alpha_property": {
+            "type": "string"
+        },
+        "alpha_dash_property": {
+            "type": "string"
+        },
+        "alpha_num_property": {
+            "type": "string"
+        },
+        "enum_property": {
+            "type": "string",
+            "enum": [
+                "one",
+                "two",
+                "three"
+            ]
+        },
+        "ip_property": {
+            "type": "string"
+        },
+        "ipv4_property": {
+            "type": "string",
+            "format": "ipv4"
+        },
+        "ipv6_property": {
+            "type": "string",
+            "format": "ipv6"
+        },
+        "mac_address_property": {
+            "type": "string"
+        },
+        "json_property": {
+            "type": "string"
+        },
+        "url_property": {
+            "type": "string",
+            "format": "uri"
+        },
+        "uuid_property": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "ulid_property": {
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "type": "object",
+    "properties": {
+        "enum": {
+            "enum": [
+                "North",
+                "South",
+                "East",
+                "West"
+            ]
+        },
+        "string_enum": {
+            "type": "string",
+            "enum": [
+                "one",
+                "two",
+                "three"
+            ]
+        },
+        "int_enum": {
+            "type": "integer",
+            "enum": [
+                1,
+                2,
+                3
+            ]
+        }
+    }
+}

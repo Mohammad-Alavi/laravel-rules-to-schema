@@ -1,0 +1,11 @@
+{
+    "type": "object",
+    "properties": {
+        "boolean_property": {
+            "type": "boolean"
+        },
+        "bool_property": {
+            "type": "boolean"
+        }
+    }
+}

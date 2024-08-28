@@ -1,0 +1,8 @@
+{
+    "type": "object",
+    "properties": {
+        "other_property": {
+            "type": "string"
+        }
+    }
+}
