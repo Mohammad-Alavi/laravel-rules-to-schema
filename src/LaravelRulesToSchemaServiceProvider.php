@@ -5,7 +5,6 @@ namespace LaravelRulesToSchema;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-
 class LaravelRulesToSchemaServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void

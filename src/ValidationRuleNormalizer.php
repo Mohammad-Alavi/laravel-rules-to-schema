@@ -12,8 +12,7 @@ class ValidationRuleNormalizer
 
     public function __construct(
         protected array $rules
-    )
-    {
+    ) {
         $this->rules = $this->standardizeRules($this->rules);
     }
 
@@ -21,7 +20,7 @@ class ValidationRuleNormalizer
     {
         $nestedRules = [];
 
-        foreach($rawRules as $name => $rules) {
+        foreach ($rawRules as $name => $rules) {
 
             if (is_string($rules)) {
                 $rules = $this->splitStringToRuleset($rules);
@@ -29,7 +28,7 @@ class ValidationRuleNormalizer
 
             $rules = $this->normalizeRuleset($rules);
 
-            Arr::set($nestedRules, "$name." . config('rules-to-schema.validation_rule_token'), $rules);
+            Arr::set($nestedRules, "$name.".config('rules-to-schema.validation_rule_token'), $rules);
         }
 
         return $nestedRules;
@@ -41,16 +40,15 @@ class ValidationRuleNormalizer
     }
 
     /**
-     * @param array $rules
      * @return array<string, array<string,array>>
      */
     protected function normalizeRuleset(array $rules): array
     {
         $normalized = [];
 
-        foreach($rules as $rule) {
+        foreach ($rules as $rule) {
             if (is_string($rule)) {
-                $result       = $this->parseStringRuleArgs($rule);
+                $result = $this->parseStringRuleArgs($rule);
                 $normalized[] = $result;
             } else {
                 $normalized[] = [$rule, null];
@@ -63,8 +61,8 @@ class ValidationRuleNormalizer
     protected function splitStringToRuleset(string $rules): array
     {
         $instance = new ValidationRuleParser([]);
-        $class    = new ReflectionClass($instance);
-        $method   = $class->getMethod('explodeExplicitRule');
+        $class = new ReflectionClass($instance);
+        $method = $class->getMethod('explodeExplicitRule');
         $method->setAccessible(true);
 
         return $method->invokeArgs($instance, [$rules, null]);
@@ -73,8 +71,8 @@ class ValidationRuleNormalizer
     protected function parseStringRuleArgs(string $rule): array
     {
         $instance = new ValidationRuleParser([]);
-        $class    = new ReflectionClass($instance);
-        $method   = $class->getMethod('parseParameters');
+        $class = new ReflectionClass($instance);
+        $method = $class->getMethod('parseParameters');
         $method->setAccessible(true);
 
         $parameters = [];

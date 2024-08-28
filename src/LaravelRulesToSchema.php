@@ -16,7 +16,7 @@ class LaravelRulesToSchema
             ->type()->object()
             ->return();
 
-        foreach($normalizedRules as $property => $rawRules) {
+        foreach ($normalizedRules as $property => $rawRules) {
             $propertySchema = $this->parseRuleset($property, $rawRules);
 
             if ($propertySchema instanceof FluentSchema) {

@@ -11,10 +11,9 @@ use ReflectionClass;
 
 class TypeParser implements RuleParser
 {
-
-    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset,): array|FluentSchema|null
+    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset): array|FluentSchema|null
     {
-        foreach($validationRules as $ruleArgs) {
+        foreach ($validationRules as $ruleArgs) {
             [$rule, $args] = $ruleArgs;
 
             $ruleName = is_object($rule) ? get_class($rule) : $rule;
@@ -63,40 +62,42 @@ class TypeParser implements RuleParser
 
             if ($rule instanceof InRule || $rule === 'in') {
                 if (is_string($rule)) {
-                    $values = array_map(function(mixed $value) {
+                    $values = array_map(function (mixed $value) {
                         if (is_numeric($value)) {
                             if (ctype_digit($value)) {
                                 return intval($value);
                             }
+
                             return floatval($value);
                         }
+
                         return $value;
                     }, $args);
                 } else {
                     $values = invade($rule)->values;
                 }
 
-                $isString  = true;
-                $isInt     = true;
+                $isString = true;
+                $isInt = true;
                 $isNumeric = true;
 
-                foreach($values as $value) {
+                foreach ($values as $value) {
                     if (is_string($value)) {
-                        $isString  = $isString && true;
-                        $isInt     = false;
+                        $isString = $isString && true;
+                        $isInt = false;
                         $isNumeric = false;
                     }
 
                     if (is_int($value)) {
 
-                        $isString  = false;
-                        $isInt     = $isInt && true;
+                        $isString = false;
+                        $isInt = $isInt && true;
                         $isNumeric = false;
                     }
 
                     if (is_float($value)) {
-                        $isString  = false;
-                        $isInt     = false;
+                        $isString = false;
+                        $isInt = false;
                         $isNumeric = $isNumeric && true;
                     }
                 }

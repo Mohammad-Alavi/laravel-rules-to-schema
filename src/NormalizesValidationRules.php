@@ -2,7 +2,4 @@
 
 namespace LaravelRulesToSchema;
 
-class NormalizesValidationRules
-{
-
-}
+class NormalizesValidationRules {}

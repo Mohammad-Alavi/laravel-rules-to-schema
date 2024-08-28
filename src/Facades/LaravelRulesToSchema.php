@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static FluentSchema parse(array $rules) Parse Rules
+ *
  * @see \LaravelRulesToSchema\LaravelRulesToSchema
  */
 class LaravelRulesToSchema extends Facade

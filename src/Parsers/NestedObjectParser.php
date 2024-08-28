@@ -10,9 +10,9 @@ class NestedObjectParser implements RuleParser
 {
     use ParsesNormalizedRuleset;
 
-    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset,): array|FluentSchema|null
+    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset): array|FluentSchema|null
     {
-        $nestedObjects = array_filter($nestedRuleset, fn($x) => $x != config('rules-to-schema.validation_rule_token'), ARRAY_FILTER_USE_KEY);
+        $nestedObjects = array_filter($nestedRuleset, fn ($x) => $x != config('rules-to-schema.validation_rule_token'), ARRAY_FILTER_USE_KEY);
 
         if (count($nestedObjects) > 0) {
             $isArray = array_key_exists('*', $nestedObjects);
@@ -23,7 +23,7 @@ class NestedObjectParser implements RuleParser
                 $schema->type()->array()
                     ->items($objSchema);
             } else {
-                foreach($nestedObjects as $propName => $objValidationRules) {
+                foreach ($nestedObjects as $propName => $objValidationRules) {
                     $schema->type()->object()
                         ->property($propName, $this->parseRuleset($propName, $objValidationRules));
                 }

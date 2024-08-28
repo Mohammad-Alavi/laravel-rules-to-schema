@@ -5,18 +5,17 @@ namespace LaravelRulesToSchema\Parsers;
 use FluentJsonSchema\Enums\JsonSchemaType;
 use FluentJsonSchema\FluentSchema;
 
-class MiscPropertyParser  implements \LaravelRulesToSchema\Contracts\RuleParser
+class MiscPropertyParser implements \LaravelRulesToSchema\Contracts\RuleParser
 {
-
-    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset,): array|FluentSchema|null
+    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset): array|FluentSchema|null
     {
         /** @var JsonSchemaType[] $schemaTypes */
         $schemaTypes = $schema->getSchemaDTO()->type;
 
-        foreach($validationRules as $ruleArgs) {
+        foreach ($validationRules as $ruleArgs) {
             [$rule, $args] = $ruleArgs;
 
-            foreach($schemaTypes ?? [] as $type) {
+            foreach ($schemaTypes ?? [] as $type) {
                 if ($type === JsonSchemaType::STRING) {
                     if ($rule === 'min' && count($args) > 0) {
                         $schema->string()->minLength($args[0]);

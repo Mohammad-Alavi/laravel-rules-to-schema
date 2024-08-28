@@ -7,10 +7,9 @@ use LaravelRulesToSchema\Contracts\RuleParser;
 
 class FormatParser implements RuleParser
 {
-
-    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset,): array|FluentSchema|null
+    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset): array|FluentSchema|null
     {
-        foreach($validationRules as $ruleArgs) {
+        foreach ($validationRules as $ruleArgs) {
             [$rule, $args] = $ruleArgs;
 
             // Only enabling formatting for supported rules
@@ -19,26 +18,26 @@ class FormatParser implements RuleParser
             // Dates are not enabled because Laravel doesn't differentiate between dates and date-times
 
             match ($rule) {
-//                'regex', 'not_regex' => $schema->format()->regex(),
-//                'json-pointer'                       => $schema->format()->jsonPointer(),
-//                'relative-json-pointer'              => $schema->format()->relativeJsonPointer(),
-//                'uri-template'                       => $schema->format()->uriTemplate(),
-                'uuid'  => $schema->format()->uuid(),
-//                'iri-reference'                      => $schema->format()->iriReference(),
-//                'iri'                                => $schema->format()->iri(),
-//                'uri-reference'                      => $schema->format()->uriReference(),
-//                'uri'                => $schema->format()->uri(),
-                'url'   => $schema->format()->uri(),
-                'ipv4'  => $schema->format()->ipv4(),
-                'ipv6'  => $schema->format()->ipv6(),
-//                'hostname'                           => $schema->format()->hostname(),
-//                'idn-hostname'                       => $schema->format()->idnHostname(),
+                //                'regex', 'not_regex' => $schema->format()->regex(),
+                //                'json-pointer'                       => $schema->format()->jsonPointer(),
+                //                'relative-json-pointer'              => $schema->format()->relativeJsonPointer(),
+                //                'uri-template'                       => $schema->format()->uriTemplate(),
+                'uuid' => $schema->format()->uuid(),
+                //                'iri-reference'                      => $schema->format()->iriReference(),
+                //                'iri'                                => $schema->format()->iri(),
+                //                'uri-reference'                      => $schema->format()->uriReference(),
+                //                'uri'                => $schema->format()->uri(),
+                'url' => $schema->format()->uri(),
+                'ipv4' => $schema->format()->ipv4(),
+                'ipv6' => $schema->format()->ipv6(),
+                //                'hostname'                           => $schema->format()->hostname(),
+                //                'idn-hostname'                       => $schema->format()->idnHostname(),
                 'email' => $schema->format()->email(),
-//                'idn-email'                          => $schema->format()->idnEmail(),
-//                'date-time'                          => $schema->format()->dateTime(),
-//                'date', 'date_format', 'date_equals' => $schema->format()->dateTime(),
-//                'time'                               => $schema->format()->time(),
-//                'duration'                           => $schema->format()->duration(),
+                //                'idn-email'                          => $schema->format()->idnEmail(),
+                //                'date-time'                          => $schema->format()->dateTime(),
+                //                'date', 'date_format', 'date_equals' => $schema->format()->dateTime(),
+                //                'time'                               => $schema->format()->time(),
+                //                'duration'                           => $schema->format()->duration(),
                 default => null,
             };
 

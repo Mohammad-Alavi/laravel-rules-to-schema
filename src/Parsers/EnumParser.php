@@ -9,10 +9,9 @@ use ReflectionClass;
 
 class EnumParser implements RuleParser
 {
-
-    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset,): array|FluentSchema|null
+    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset): array|FluentSchema|null
     {
-        foreach($validationRules as $ruleArgs) {
+        foreach ($validationRules as $ruleArgs) {
             [$rule, $args] = $ruleArgs;
 
             if ($rule instanceof EnumRule) {
@@ -21,7 +20,7 @@ class EnumParser implements RuleParser
                 $reflection = new ReflectionClass($enumType);
 
                 if (count($reflection->getConstants()) > 0) {
-                    $values = array_values(array_map(function(\UnitEnum|\BackedEnum $c) {
+                    $values = array_values(array_map(function (\UnitEnum|\BackedEnum $c) {
                         return $c instanceof \BackedEnum ? $c->value : $c->name;
                     }, $reflection->getConstants()));
 

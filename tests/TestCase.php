@@ -3,8 +3,8 @@
 namespace LaravelRulesToSchema\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use LaravelRulesToSchema\LaravelRulesToSchemaServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
