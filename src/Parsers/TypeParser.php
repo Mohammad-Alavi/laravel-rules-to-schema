@@ -69,27 +69,27 @@ class TypeParser implements RuleParser
             $values = invade($ruleName)->values;
         }
 
-        $isString = true;
-        $isInt = true;
+        $isString  = true;
+        $isInt     = true;
         $isNumeric = true;
 
         foreach ($values as $value) {
             if (is_string($value)) {
-                $isString = $isString && true;
-                $isInt = false;
+                $isString  = $isString && true;
+                $isInt     = false;
                 $isNumeric = false;
             }
 
             if (is_int($value)) {
 
-                $isString = false;
-                $isInt = $isInt && true;
+                $isString  = false;
+                $isInt     = $isInt && true;
                 $isNumeric = false;
             }
 
             if (is_float($value)) {
-                $isString = false;
-                $isInt = false;
+                $isString  = false;
+                $isInt     = false;
                 $isNumeric = $isNumeric && true;
             }
         }

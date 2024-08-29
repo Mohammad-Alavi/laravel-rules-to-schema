@@ -14,7 +14,7 @@ class ConfirmedParser implements RuleParser
 
             if ($rule === 'confirmed') {
                 return [
-                    $attribute => $schema,
+                    $attribute               => $schema,
                     "{$attribute}_confirmed" => clone $schema,
                 ];
             }

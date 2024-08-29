@@ -27,7 +27,7 @@ class FormatParser implements RuleParser
                 //                'iri'                                => $schema->format()->iri(),
                 //                'uri-reference'                      => $schema->format()->uriReference(),
                 //                'uri'                => $schema->format()->uri(),
-                'url' => $schema->format()->uri(),
+                'url'  => $schema->format()->uri(),
                 'ipv4' => $schema->format()->ipv4(),
                 'ipv6' => $schema->format()->ipv6(),
                 //                'hostname'                           => $schema->format()->hostname(),

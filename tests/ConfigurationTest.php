@@ -15,14 +15,14 @@ test('custom rule types', function () {
     Config::set('rules-to-schema.rule_type_map.exclude', ['custom_exclude_rule']);
 
     $rules = [
-        'string' => ['custom_string_rule'],
+        'string'       => ['custom_string_rule'],
         'string_class' => [new CustomRule],
-        'integer' => ['custom_integer_rule'],
-        'number' => ['custom_number_rule'],
-        'boolean' => ['custom_boolean_rule'],
-        'array' => ['custom_array_rule'],
-        'nullable' => ['custom_nullable_rule'],
-        'exclude' => ['custom_exclude_rule'],
+        'integer'      => ['custom_integer_rule'],
+        'number'       => ['custom_number_rule'],
+        'boolean'      => ['custom_boolean_rule'],
+        'array'        => ['custom_array_rule'],
+        'nullable'     => ['custom_nullable_rule'],
+        'exclude'      => ['custom_exclude_rule'],
     ];
 
     expect(LaravelRulesToSchema::parse($rules)->compile())
@@ -31,12 +31,12 @@ test('custom rule types', function () {
 
 test('custom rule can have custom schema', function () {
     Config::set('rules-to-schema.custom_rule_schemas', [
-        CustomRule::class => CustomRuleSchemaDefinition::class,
+        CustomRule::class        => CustomRuleSchemaDefinition::class,
         'custom_registered_rule' => CustomRuleSchemaDefinition::class,
     ]);
 
     $rules = [
-        'custom_with_schema' => [new CustomRule],
+        'custom_with_schema'     => [new CustomRule],
         'custom_registered_rule' => ['custom_registered_rule'],
     ];
 

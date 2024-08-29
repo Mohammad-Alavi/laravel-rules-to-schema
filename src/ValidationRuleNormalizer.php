@@ -48,7 +48,7 @@ class ValidationRuleNormalizer
 
         foreach ($rules as $rule) {
             if (is_string($rule)) {
-                $result = $this->parseStringRuleArgs($rule);
+                $result       = $this->parseStringRuleArgs($rule);
                 $normalized[] = $result;
             } else {
                 $normalized[] = [$rule, null];
@@ -61,8 +61,8 @@ class ValidationRuleNormalizer
     protected function splitStringToRuleset(string $rules): array
     {
         $instance = new ValidationRuleParser([]);
-        $class = new ReflectionClass($instance);
-        $method = $class->getMethod('explodeExplicitRule');
+        $class    = new ReflectionClass($instance);
+        $method   = $class->getMethod('explodeExplicitRule');
         $method->setAccessible(true);
 
         return $method->invokeArgs($instance, [$rules, null]);
@@ -71,8 +71,8 @@ class ValidationRuleNormalizer
     protected function parseStringRuleArgs(string $rule): array
     {
         $instance = new ValidationRuleParser([]);
-        $class = new ReflectionClass($instance);
-        $method = $class->getMethod('parseParameters');
+        $class    = new ReflectionClass($instance);
+        $method   = $class->getMethod('parseParameters');
         $method->setAccessible(true);
 
         $parameters = [];
