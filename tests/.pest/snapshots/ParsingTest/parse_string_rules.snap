@@ -3,8 +3,8 @@
     "properties": {
         "strings": {
             "type": "string",
-            "format": "uri",
-            "minLength": 6
+            "minLength": 6,
+            "format": "uri"
         }
     }
 }

@@ -3,13 +3,33 @@
 namespace LaravelRulesToSchema\Parsers;
 
 use FluentJsonSchema\FluentSchema;
+use Illuminate\Validation\Rules\Enum as EnumRule;
 use LaravelRulesToSchema\Contracts\RuleParser;
+use ReflectionClass;
 
-enum EnumParser implements RuleParser
+class EnumParser implements RuleParser
 {
 
-    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset,)
+    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset,): array|FluentSchema|null
     {
-        // TODO: Implement __invoke() method.
+        foreach($validationRules as $ruleArgs) {
+            [$rule, $args] = $ruleArgs;
+
+            if ($rule instanceof EnumRule) {
+                $enumType = invade($rule)->type;
+
+                $reflection = new ReflectionClass($enumType);
+
+                if (count($reflection->getConstants()) > 0) {
+                    $values = array_values(array_map(function(\UnitEnum|\BackedEnum $c) {
+                        return $c instanceof \BackedEnum ? $c->value : $c->name;
+                    }, $reflection->getConstants()));
+
+                    $schema->object()->enum($values);
+                }
+            }
+        }
+
+        return $schema;
     }
 }
