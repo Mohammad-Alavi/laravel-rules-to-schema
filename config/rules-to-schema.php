@@ -23,4 +23,11 @@ return [
         \LaravelRulesToSchema\Parsers\ConfirmedParser::class,
     ],
 
+    'rule_type_map' => [
+        'string' => [],
+        'integer' => [],
+        'number' => [],
+        'null' => [],
+    ],
+
 ];
