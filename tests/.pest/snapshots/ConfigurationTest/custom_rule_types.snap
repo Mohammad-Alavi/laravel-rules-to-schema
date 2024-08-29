@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "string": {
+            "type": "string"
+        },
+        "string_class": {
+            "type": "string"
+        },
+        "integer": {
+            "type": "integer"
+        },
+        "number": {
+            "type": "number"
+        },
+        "boolean": {
+            "type": "boolean"
+        },
+        "array": {
+            "type": "array"
+        },
+        "nullable": {
+            "type": "null"
+        }
+    }
+}

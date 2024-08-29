@@ -2,9 +2,9 @@
 
 namespace LaravelRulesToSchema;
 
-class RuleCategory
+class LaravelRuleType
 {
-    public static function strings(): array
+    public static function string(): array
     {
         return [
             'string',
@@ -29,7 +29,7 @@ class RuleCategory
         ];
     }
 
-    public static function integers(): array
+    public static function integer(): array
     {
         return [
             'integer',
@@ -39,7 +39,7 @@ class RuleCategory
         ];
     }
 
-    public static function numbers(): array
+    public static function number(): array
     {
         return [
             'numeric',
@@ -47,7 +47,7 @@ class RuleCategory
         ];
     }
 
-    public static function booleans(): array
+    public static function boolean(): array
     {
         return [
             'bool',
@@ -56,7 +56,7 @@ class RuleCategory
         ];
     }
 
-    public static function arrays(): array
+    public static function array(): array
     {
         return [
             'array',
@@ -64,14 +64,14 @@ class RuleCategory
         ];
     }
 
-    public static function nullables(): array
+    public static function nullable(): array
     {
         return [
             'nullable',
         ];
     }
 
-    public static function conditionals(): array
+    public static function conditional(): array
     {
         return [
             'sometimes',
@@ -97,7 +97,7 @@ class RuleCategory
         ];
     }
 
-    public static function excluded(): array
+    public static function exclude(): array
     {
         return [
             'prohibited',

@@ -10,7 +10,7 @@ interface RuleParser
      * @return null|FluentSchema|FluentSchema[]
      */
     public function __invoke(
-        string $property,
+        string $attribute,
         FluentSchema $schema,
         array $validationRules,
         array $nestedRuleset,

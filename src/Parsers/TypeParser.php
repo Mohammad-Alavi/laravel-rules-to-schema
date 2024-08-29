@@ -6,37 +6,36 @@ use FluentJsonSchema\FluentSchema;
 use Illuminate\Validation\Rules\Enum as EnumRule;
 use Illuminate\Validation\Rules\In as InRule;
 use LaravelRulesToSchema\Contracts\RuleParser;
-use LaravelRulesToSchema\RuleCategory;
 use ReflectionClass;
 
 class TypeParser implements RuleParser
 {
-    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset): array|FluentSchema|null
+    public function __invoke(string $attribute, FluentSchema $schema, array $validationRules, array $nestedRuleset): array|FluentSchema|null
     {
         foreach ($validationRules as $ruleArgs) {
             [$rule, $args] = $ruleArgs;
 
             $ruleName = is_object($rule) ? get_class($rule) : $rule;
 
-            if (in_array($ruleName, RuleCategory::strings())) {
+            if (in_array($ruleName, config('rules-to-schema.rule_type_map.string'))) {
                 $schema->type()->string();
             }
-            if (in_array($ruleName, RuleCategory::integers())) {
+            if (in_array($ruleName, config('rules-to-schema.rule_type_map.integer'))) {
                 $schema->type()->integer();
             }
-            if (in_array($ruleName, RuleCategory::numbers())) {
+            if (in_array($ruleName, config('rules-to-schema.rule_type_map.number'))) {
                 $schema->type()->number();
             }
-            if (in_array($ruleName, RuleCategory::booleans())) {
+            if (in_array($ruleName, config('rules-to-schema.rule_type_map.boolean'))) {
                 $schema->type()->boolean();
             }
-            if (in_array($ruleName, RuleCategory::arrays())) {
+            if (in_array($ruleName, config('rules-to-schema.rule_type_map.array'))) {
                 // Check if what we are dealing with is not an object type with properties
                 if (count(array_diff_key($nestedRuleset, array_flip([config('rules-to-schema.validation_rule_token')]))) == 0) {
                     $schema->type()->array();
                 }
             }
-            if (in_array($ruleName, RuleCategory::nullables())) {
+            if (in_array($ruleName, config('rules-to-schema.rule_type_map.nullable'))) {
                 $schema->type()->null();
             }
 

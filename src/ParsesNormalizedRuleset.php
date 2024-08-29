@@ -13,8 +13,8 @@ trait ParsesNormalizedRuleset
 
         $schemas = [$name => FluentSchema::make()];
 
-        foreach (config('rules-to-schema.pipes') as $pipeClass) {
-            $instance = app($pipeClass);
+        foreach (config('rules-to-schema.parsers') as $parserClass) {
+            $instance = app($parserClass);
 
             if (! $instance instanceof \LaravelRulesToSchema\Contracts\RuleParser) {
                 throw new Exception('Rule parsers must implement '.\LaravelRulesToSchema\Contracts\RuleParser::class);

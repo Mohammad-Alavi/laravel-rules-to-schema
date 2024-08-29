@@ -7,7 +7,7 @@ use LaravelRulesToSchema\Contracts\RuleParser;
 
 class RequiredParser implements RuleParser
 {
-    public function __invoke(string $property, FluentSchema $schema, array $validationRules, array $nestedRuleset): array|FluentSchema|null
+    public function __invoke(string $attribute, FluentSchema $schema, array $validationRules, array $nestedRuleset): array|FluentSchema|null
     {
         $foundRequired = false;
         foreach ($validationRules as $ruleArgs) {

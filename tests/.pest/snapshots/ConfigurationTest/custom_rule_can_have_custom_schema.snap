@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "custom_with_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "property": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        "custom_registered_rule": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "property": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}
