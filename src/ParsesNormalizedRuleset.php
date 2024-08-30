@@ -3,6 +3,7 @@
 namespace LaravelRulesToSchema;
 
 use FluentJsonSchema\FluentSchema;
+use LaravelRulesToSchema\Contracts\RuleParser;
 use Mockery\Exception;
 
 trait ParsesNormalizedRuleset
@@ -13,11 +14,11 @@ trait ParsesNormalizedRuleset
 
         $schemas = [$name => FluentSchema::make()];
 
-        foreach (config('rules-to-schema.parsers') as $parserClass) {
+        foreach (\LaravelRulesToSchema\Facades\LaravelRulesToSchema::getParsers() as $parserClass) {
             $instance = app($parserClass);
 
-            if (! $instance instanceof \LaravelRulesToSchema\Contracts\RuleParser) {
-                throw new Exception('Rule parsers must implement '.\LaravelRulesToSchema\Contracts\RuleParser::class);
+            if (! $instance instanceof RuleParser) {
+                throw new Exception('Rule parsers must implement '.RuleParser::class);
             }
 
             $newSchemas = [];

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static FluentSchema parse(array $rules) Parse Rules
+ * @method static void registerParser(string $parser) Register a rule parser
+ * @method static void registerCustomRuleSchema(string $rule, mixed $type) Register a schema for a custom rule
  *
  * @see \LaravelRulesToSchema\LaravelRulesToSchema
  */

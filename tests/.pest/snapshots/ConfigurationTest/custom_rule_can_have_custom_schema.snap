@@ -22,6 +22,36 @@
                     }
                 }
             }
+        },
+        "integer": {
+            "type": "integer"
+        },
+        "number": {
+            "type": "number"
+        },
+        "boolean": {
+            "type": "boolean"
+        },
+        "array": {
+            "type": "array"
+        },
+        "nullable": {
+            "type": "null"
+        },
+        "custom_rule_as_enum": {
+            "type": "string"
+        },
+        "custom_rule_as_enum_array": {
+            "type": [
+                "null",
+                "number"
+            ]
+        },
+        "custom_multiple_types": {
+            "type": [
+                "null",
+                "string"
+            ]
         }
     }
 }

@@ -6,6 +6,7 @@ use FluentJsonSchema\FluentSchema;
 use Illuminate\Validation\Rules\Enum as EnumRule;
 use Illuminate\Validation\Rules\In as InRule;
 use LaravelRulesToSchema\Contracts\RuleParser;
+use LaravelRulesToSchema\LaravelRuleType;
 use ReflectionClass;
 
 class TypeParser implements RuleParser
@@ -17,25 +18,25 @@ class TypeParser implements RuleParser
 
             $ruleName = is_object($rule) ? get_class($rule) : $rule;
 
-            if (in_array($ruleName, config('rules-to-schema.rule_type_map.string'))) {
+            if (in_array($ruleName, LaravelRuleType::string())) {
                 $schema->type()->string();
             }
-            if (in_array($ruleName, config('rules-to-schema.rule_type_map.integer'))) {
+            if (in_array($ruleName, LaravelRuleType::integer())) {
                 $schema->type()->integer();
             }
-            if (in_array($ruleName, config('rules-to-schema.rule_type_map.number'))) {
+            if (in_array($ruleName, LaravelRuleType::number())) {
                 $schema->type()->number();
             }
-            if (in_array($ruleName, config('rules-to-schema.rule_type_map.boolean'))) {
+            if (in_array($ruleName, LaravelRuleType::boolean())) {
                 $schema->type()->boolean();
             }
-            if (in_array($ruleName, config('rules-to-schema.rule_type_map.array'))) {
+            if (in_array($ruleName, LaravelRuleType::array())) {
                 // Check if what we are dealing with is not an object type with properties
                 if (count(array_diff_key($nestedRuleset, array_flip([config('rules-to-schema.validation_rule_token')]))) == 0) {
                     $schema->type()->array();
                 }
             }
-            if (in_array($ruleName, config('rules-to-schema.rule_type_map.nullable'))) {
+            if (in_array($ruleName, LaravelRuleType::nullable())) {
                 $schema->type()->null();
             }
 

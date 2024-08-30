@@ -1,0 +1,11 @@
+{
+    "type": "object",
+    "properties": {
+        "custom": {
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    }
+}

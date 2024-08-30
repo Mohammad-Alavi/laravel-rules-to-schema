@@ -1,14 +1,13 @@
 <?php
 
-use LaravelRulesToSchema\LaravelRuleType;
 use LaravelRulesToSchema\Parsers\ConfirmedParser;
+use LaravelRulesToSchema\Parsers\CustomRuleSchemaParser;
 use LaravelRulesToSchema\Parsers\EnumParser;
 use LaravelRulesToSchema\Parsers\ExcludedParser;
 use LaravelRulesToSchema\Parsers\FormatParser;
 use LaravelRulesToSchema\Parsers\MiscPropertyParser;
 use LaravelRulesToSchema\Parsers\NestedObjectParser;
 use LaravelRulesToSchema\Parsers\RequiredParser;
-use LaravelRulesToSchema\Parsers\RuleHasJsonSchemaParser;
 use LaravelRulesToSchema\Parsers\TypeParser;
 
 return [
@@ -32,34 +31,7 @@ return [
         EnumParser::class,
         ExcludedParser::class,
         ConfirmedParser::class,
-        RuleHasJsonSchemaParser::class,
-    ],
-
-    /*
-     * For convenience, simple types for custom rules can be added here
-     */
-    'rule_type_map' => [
-        'string' => [
-            ...LaravelRuleType::string(),
-        ],
-        'integer' => [
-            ...LaravelRuleType::integer(),
-        ],
-        'number' => [
-            ...LaravelRuleType::number(),
-        ],
-        'boolean' => [
-            ...LaravelRuleType::boolean(),
-        ],
-        'nullable' => [
-            ...LaravelRuleType::nullable(),
-        ],
-        'array' => [
-            ...LaravelRuleType::array(),
-        ],
-        'exclude' => [
-            ...LaravelRuleType::exclude(),
-        ],
+        CustomRuleSchemaParser::class,
     ],
 
     /*
@@ -67,5 +39,7 @@ return [
      */
     'custom_rule_schemas' => [
         // \CustomPackage\CustomRule::class => \Support\CustomRuleSchemaDefinition::class,
+        // \CustomPackage\CustomRule::class => 'string',
+        // \CustomPackage\CustomRule::class => ['null', 'string'],
     ],
 ];
