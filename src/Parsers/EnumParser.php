@@ -15,7 +15,7 @@ class EnumParser implements RuleParser
             [$rule, $args] = $ruleArgs;
 
             if ($rule instanceof EnumRule) {
-                $enumType = invade($rule)->type;
+                $enumType = invade($rule)->type; /** @phpstan-ignore property.protected */
 
                 $reflection = new ReflectionClass($enumType);
 

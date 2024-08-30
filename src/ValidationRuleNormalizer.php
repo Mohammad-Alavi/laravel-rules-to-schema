@@ -40,7 +40,7 @@ class ValidationRuleNormalizer
     }
 
     /**
-     * @return array<string, array<string,array>>
+     * @return array<int, array<string|object,array>>
      */
     protected function normalizeRuleset(array $rules): array
     {

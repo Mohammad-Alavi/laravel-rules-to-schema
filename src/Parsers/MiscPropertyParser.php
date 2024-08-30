@@ -9,7 +9,6 @@ class MiscPropertyParser implements \LaravelRulesToSchema\Contracts\RuleParser
 {
     public function __invoke(string $attribute, FluentSchema $schema, array $validationRules, array $nestedRuleset): array|FluentSchema|null
     {
-        /** @var JsonSchemaType[] $schemaTypes */
         $schemaTypes = $schema->getSchemaDTO()->type;
 
         foreach ($validationRules as $ruleArgs) {
