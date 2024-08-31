@@ -13,7 +13,7 @@ class TypeParser implements RuleParser
 {
     public function __invoke(string $attribute, FluentSchema $schema, array $validationRules, array $nestedRuleset): array|FluentSchema|null
     {
-        foreach($validationRules as $ruleArgs) {
+        foreach ($validationRules as $ruleArgs) {
             [$rule, $args] = $ruleArgs;
 
             $ruleName = is_object($rule) ? get_class($rule) : $rule;
@@ -57,7 +57,7 @@ class TypeParser implements RuleParser
         $values = null;
 
         if (is_string($ruleName)) {
-            $values = array_map(function(mixed $value) {
+            $values = array_map(function (mixed $value) {
                 if (is_numeric($value)) {
                     if (ctype_digit($value)) {
                         return intval($value);
@@ -72,7 +72,7 @@ class TypeParser implements RuleParser
             $values = invade($ruleName)->values; /** @phpstan-ignore property.protected */
         }
 
-        if (!$values) {
+        if (! $values) {
             return;
         }
 
@@ -80,7 +80,7 @@ class TypeParser implements RuleParser
         $isInt     = true;
         $isNumeric = true;
 
-        foreach($values as $value) {
+        foreach ($values as $value) {
             if (is_string($value)) {
                 $isInt     = false;
                 $isNumeric = false;
@@ -110,8 +110,7 @@ class TypeParser implements RuleParser
 
     protected function parseEnumRule(FluentSchema $schema, EnumRule $rule): void
     {
-        $enumType = invade($rule)->type; /** @phpstan-ignore property.protected */
-
+        $enumType   = invade($rule)->type; /** @phpstan-ignore property.protected */
         $reflection = new ReflectionClass($enumType);
 
         if (
