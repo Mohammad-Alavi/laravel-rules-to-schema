@@ -3,6 +3,7 @@
 namespace LaravelRulesToSchema;
 
 use FluentJsonSchema\FluentSchema;
+use Illuminate\Foundation\Http\FormRequest;
 
 class LaravelRulesToSchema
 {
@@ -12,8 +13,17 @@ class LaravelRulesToSchema
 
     protected static array $additionalCustomSchemas = [];
 
-    public function parse(array $rules): FluentSchema
+    public function parse(string|array $rules): FluentSchema
     {
+        if (is_string($rules)) {
+            if (! class_exists($rules)) {
+                throw new \Exception("Class $rules does not implement ".FormRequest::class.' and can not be parsed.');
+            }
+            $instance = new $rules;
+
+            $rules = method_exists($instance, 'rules') ? app()->call([$instance, 'rules']) : [];
+        }
+
         $normalizedRules = (new ValidationRuleNormalizer($rules))->getRules();
 
         $schema = FluentSchema::make()

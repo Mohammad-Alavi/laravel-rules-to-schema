@@ -13,7 +13,7 @@ use LaravelRulesToSchema\Parsers\TypeParser;
 return [
 
     /*
-     * The key to store validation rules under
+     * The internal key to store validation rules under for parsers
      * This should be unique and not match any real property names
      * that will be submitted in requests.
      */

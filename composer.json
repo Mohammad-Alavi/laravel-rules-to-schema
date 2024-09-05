@@ -1,10 +1,13 @@
 {
     "name": "riley19280/laravel-rules-to-schema",
-    "description": "Parse Laravel validation rules into a Json Schema Object",
+    "description": "Parse Laravel validation rules into a Json Schema",
     "keywords": [
         "Riley Aven",
         "laravel",
-        "laravel-rules-to-schema"
+        "laravel-rules-to-schema",
+        "json schema",
+        "laravel rule",
+        "parse rule"
     ],
     "homepage": "https://github.com/riley19280/laravel-rules-to-schema",
     "license": "MIT",

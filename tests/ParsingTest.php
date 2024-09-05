@@ -3,6 +3,7 @@
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 use LaravelRulesToSchema\Facades\LaravelRulesToSchema;
+use LaravelRulesToSchema\Tests\Fixtures\CustomFormRequest;
 use LaravelRulesToSchema\Tests\Fixtures\TestEnum;
 use LaravelRulesToSchema\Tests\Fixtures\TestIntBackedEnum;
 use LaravelRulesToSchema\Tests\Fixtures\TestModel;
@@ -229,5 +230,10 @@ test('enum', function () {
     ];
 
     expect(LaravelRulesToSchema::parse($rules)->compile())
+        ->toMatchSnapshot();
+});
+
+test('parse for request class', function () {
+    expect(LaravelRulesToSchema::parse(CustomFormRequest::class)->compile())
         ->toMatchSnapshot();
 });
